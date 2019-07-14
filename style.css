@@ -1,3 +1,8 @@
 body {
     background: url("https://static.vecteezy.com/system/resources/previews/000/464/025/non_2x/dog-seamless-pattern-theme-bone-paw-foot-print-for-use-as-wallpaper-or-background-vector.jpg")
 }
+
+h1 {
+    color: purple;
+    text-align: center;
+}
