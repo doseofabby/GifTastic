@@ -2,79 +2,85 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Dog Buttons</title>
+ <meta charset="utf-8">
+ <title>Dog Buttons</title>
 
-  <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-  <button data-dog="wolf">wolf</button>
-  <button data-dog="golden retriever">golden retriever</button>
-  <button data-dog="chihuahua">chihuahua</button>
-  <button data-dog= "husky">husky</button>
-  <button data-dog= "pug"> pug </button>
-  <button data-dog= "pitbull">pitbull</button>
-  <button data-dog= "poodle">poodle</button>
-  <button data-dog= "german shepard">german shepard</button>
-  <button data-dog= "beagle">beagle</button>
-  <div id="gifs-appear-here">
-    
-<input><button id= "search">submit</button>
-        <div id = "holdinformation">
-                <div id ="gifsHere">
-                    
-                </div>
+
+<div class="container">
+    <h1>DOGS, DOGS AND MORE DOGS </h1>
+
+    <div id="buttons-view"></div>
+
+    <form id="movie-form">
+      <label for="movie-input"><strong> New Dog</strong></label>
+      <input type="text" id="movie-input"><br>
+
+      <input id="add-dog" type="submit" value="Add a dog">
+    </form>
 
 
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    
-    $("button").on("click", function() {
-    var dog = $(this).attr("data-dog");
-    var dog = $("input").val();
+    <button data-dog="wolf">wolf</button>
+    <button data-dog="golden retriever">golden retriever</button>
+    <button data-dog="chihuahua">chihuahua</button>
+    <button data-dog= "husky">husky</button>
+    <button data-dog= "pug"> pug </button>
+    <button data-dog= "pitbull">pitbull</button>
+    <button data-dog= "poodle">poodle</button>
+    <button data-dog= "german shepard">german shepard</button>
+    <button data-dog= "beagle">beagle</button>
+    <div id="gifs-appear-here">
 
-  
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        dog + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-       
-        .then(function(response) {
-          
-         
-          var results = response.data;
+ </div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
 
-          // Looping through each result item
-          for (var i = 0; i < results.length; i++) {
+   $("button").on("click", function() {
+   var dog = $(this).attr("data-dog");
 
-            // Creating and storing a div tag
-            var dogDiv = $("<div>");
 
-            // Creating a paragraph tag with the result item's rating
-            var p = $("<p>").text("Rating: " + results[i].rating);
+   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+       dog + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
+     $.ajax({
+       url: queryURL,
+       method: "GET"
+     })
+
+       .then(function(response) {
+        var results = response.data;
+
+         // Looping through each result item
+         for (var i = 0; i < results.length; i++) {
+
+           
+           var dogDiv = $("<div>");
+
+           // Creating a paragraph tag with the result item's rating
+           var p = $("<p>").text("Rating: " + results[i].rating);
+
+
+           var dogImage = $("<img>");
+           // Setting the src attribute
+           dogImage.attr("src", results[i].images.fixed_height.url);
+
+           // Append
+           dogDiv.append(p);
+           dogDiv.append(dogImage);
+
+            $("#gifs-appear-here").prepend(dogDiv);
             
-            var dogImage = $("<img>");
-            // Setting the src attribute 
-            dogImage.attr("src", results[i].images.fixed_height.url);
-
-            // Append
-            dogDiv.append(p);
-            dogDiv.append(dogImage);
-
-            $("#gifsHere").prepend(dogDiv);
-          }
-        });
-    });
+         }
+       });
+   });
 
 
-  </script>
+ </script>
 </body>
 
 </html>
