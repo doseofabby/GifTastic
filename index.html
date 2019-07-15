@@ -6,6 +6,8 @@
  <title>Dog Buttons</title>
 
  <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 
@@ -20,20 +22,21 @@
       <label for="movie-input"><strong> New Dog</strong></label>
       <input type="text" id="movie-input"><br>
 
-      <button id="add-dog" type="button" value="Add a dog">Submit</button>
+      <button id="add-dog" type="button" class="btn btn-danger" value="Add a dog">Submit</button> <br> </br>
     </form>
 
     <div class= "dogBtns">
-    <button id= "dogAppend" data-dog="wolf">wolf</button>
-    <button id= "dogAppend" data-dog="golden retriever">golden retriever</button>
-    <button id= "dogAppend" data-dog="chihuahua">chihuahua</button>
-    <button id= "dogAppend" data-dog= "husky">husky</button>
-    <button id= "dogAppend" data-dog= "pug"> pug </button>
-    <button id= "dogAppend" data-dog= "pitbull">pitbull</button>
-    <button id= "dogAppend" data-dog= "poodle">poodle</button>
-    <button id= "dogAppend" data-dog= "german shepard">german shepard</button>
-    <button id= "dogAppend" data-dog= "beagle">beagle</button>
-    <div class="moreBtns" id="dogtag"></div>
+    <button id= "dogAppend" class="btn btn-dark" data-dog="wolf">wolf</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog="golden retriever">golden retriever</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog="chihuahua">chihuahua</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog= "husky">husky</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog= "pug"> pug </button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog= "pitbull">pitbull</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog= "poodle">poodle</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog= "german shepard">german shepard</button>
+    <button id= "dogAppend" class="btn btn-dark" data-dog= "beagle">beagle</button>
+    <div class="moreBtns" id="dogtag"></div> 
+    <button id="button" class="btn btn-link"></button>
 </div> 
         <div id="gifs-appear-here">
 
@@ -45,7 +48,7 @@
    $("#add-dog").on("click", function() {
    var dog = $(this).attr("data-dog");
    dog = $("input").val(); 
-    $(".dogBtns").append("<button id='dogAppend' data-dog='"+ dog +"'>"+dog+"</button>");
+    $(".dogBtns").append("<button id='dogAppend' class='btn btn-dark' data-dog='"+ dog +"'>"+dog+"</button>");
 
    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
        dog + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
